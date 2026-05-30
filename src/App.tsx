@@ -13,6 +13,7 @@ import { Acting } from './features/acting/Acting';
 import { Wildlife } from './features/wildlife/Wildlife';
 import { Journey } from './features/journey/Journey';
 import { Contact } from './features/contact/Contact';
+import { Analytics } from '@vercel/analytics/next';
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState<PageType>(PAGES.HOME as PageType);
@@ -42,6 +43,7 @@ export default function App() {
   };
 
   return (
+    <>
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Layout>
@@ -69,5 +71,7 @@ export default function App() {
         
       </Layout>
     </ThemeProvider>
+    <Analytics />
+    </>
   );
 }
