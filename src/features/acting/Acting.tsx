@@ -171,23 +171,23 @@ const reels = [
 ];
 
 const galleryImages = [
-  { src: 'Acting/Anger.jpg', span: 'col-span-1 md:col-span-2 row-span-2' },
-  { src: 'Posters/gajarama2.jpeg', span: 'col-span-1 row-span-1' },
-  { src: 'Posters/Ambarisha1.jpg', span: 'col-span-1 row-span-1' },
-  { src: 'Posters/onPaper2.jpeg', span: 'col-span-1 row-span-1' },
-  { src: 'Gym/Homehero1.JPG', span: 'col-span-1 md:col-span-2 row-span-1' },
-  { src: 'Acting/Prabas.jpg', span: 'col-span-1 row-span-2' },
-  { src: 'Posters/onStage.jpeg', span: 'col-span-1 row-span-1' },
-  { src: 'Posters/KamalSri1.jpeg', span: 'col-span-1 row-span-1' },
-  { src: 'Acting/shared image (1).jpg', span: 'col-span-1 md:col-span-2 row-span-2' },
-  { src: 'Posters/onPaper.jpeg', span: 'col-span-1 row-span-1' },
-  { src: 'Gym/shared image (3).jpg', span: 'col-span-1 row-span-1' },
-  { src: 'Posters/onPaper3.jpeg', span: 'col-span-1 row-span-1' },
-  { src: 'Gym/shared image (4).jpg', span: 'col-span-1 row-span-1' },
-  { src: 'Posters/KamalSri2.jpeg', span: 'col-span-1 row-span-1' },
-  { src: 'Posters/Ambarisha.jpg', span: 'col-span-1 row-span-1' },
-  { src: 'Posters/cutout.jpeg', span: 'col-span-1 md:col-span-2 row-span-1' },
-  { src: 'Acting/Tiger_prabrakar.jpg', span: 'col-span-1 row-span-1' },
+  { src: 'Acting/Anger.webp', span: 'col-span-1 md:col-span-2 row-span-2' },
+  { src: 'Posters/gajarama2.webp', span: 'col-span-1 row-span-1' },
+  { src: 'Posters/Ambarisha1.webp', span: 'col-span-1 row-span-1' },
+  { src: 'Posters/onPaper2.webp', span: 'col-span-1 row-span-1' },
+  { src: 'Gym/Homehero1.webp', span: 'col-span-1 md:col-span-2 row-span-1' },
+  { src: 'Acting/Prabas.webp', span: 'col-span-1 row-span-2' },
+  { src: 'Posters/onStage.webp', span: 'col-span-1 row-span-1' },
+  { src: 'Posters/KamalSri1.webp', span: 'col-span-1 row-span-1' },
+  { src: 'Acting/shared image (1).webp', span: 'col-span-1 md:col-span-2 row-span-2' },
+  { src: 'Posters/onPaper.webp', span: 'col-span-1 row-span-1' },
+  { src: 'Gym/shared image (3).webp', span: 'col-span-1 row-span-1' },
+  { src: 'Posters/onPaper3.webp', span: 'col-span-1 row-span-1' },
+  { src: 'Gym/shared image (4).webp', span: 'col-span-1 row-span-1' },
+  { src: 'Posters/KamalSri2.webp', span: 'col-span-1 row-span-1' },
+  { src: 'Posters/Ambarisha.webp', span: 'col-span-1 row-span-1' },
+  { src: 'Posters/cutout.webp', span: 'col-span-1 md:col-span-2 row-span-1' },
+  { src: 'Acting/Tiger_prabrakar.webp', span: 'col-span-1 row-span-1' },
 ];
 
 export const Acting = ({ setPage }: ActingProps) => {
@@ -284,7 +284,7 @@ export const Acting = ({ setPage }: ActingProps) => {
             <CinematicHeroImageWrapper>
 
               <CinematicHeroImage
-                src="/assets/Acting/acting.jpg"
+                src="/assets/Acting/acting.webp"
                 alt="Karthik Shekar Acharya"
               />
 
@@ -366,7 +366,7 @@ export const Acting = ({ setPage }: ActingProps) => {
               <EditorialAboutImageWrapper>
 
                 <EditorialAboutImage
-                  src={`${import.meta.env.BASE_URL}assets/Acting/Anger.jpg`}
+                  src={`${import.meta.env.BASE_URL}assets/Acting/Anger.webp`}
                   alt="Karthik Shekar Acharya"
                 />
 
@@ -460,7 +460,7 @@ export const Acting = ({ setPage }: ActingProps) => {
               <InstaPromoBox
               >
                 <InstaAvatar
-                  src={new URL('/assets/Acting/acting.jpg', import.meta.url).href}
+                  src={new URL('/assets/Acting/acting.webp', import.meta.url).href}
                   alt="Karthik Shekar"
                 />
                 <Box>

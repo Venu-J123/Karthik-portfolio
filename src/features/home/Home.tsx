@@ -415,18 +415,18 @@ type CarouselItem = { src: string; category: string; type: 'image' | 'video' };
 
 const CAROUSEL_IMAGES: CarouselItem[] = [
   { src: `${_BASE}assets/Acting/reel/reelItem.mp4`,            category: 'Reel',     type: 'video' },
-  { src: `${_BASE}assets/Gym/heroImage4.PNG`,                 category: 'Fitness',   type: 'image' },
-  { src: `${_BASE}assets/Style/IMG-20260413-WA0063.jpg`,       category: 'Style',    type: 'image' },
-  { src: `${_BASE}assets/Gym/speed.jpg`,                      category: 'Fitness',  type: 'image' },
-  { src: `${_BASE}assets/Posters/KamalSri1.jpeg`,              category: 'Cinema',   type: 'image' },
+  { src: `${_BASE}assets/Gym/heroImage4.webp`,                 category: 'Fitness',   type: 'image' },
+  { src: `${_BASE}assets/Style/IMG-20260413-WA0063.webp`,       category: 'Style',    type: 'image' },
+  { src: `${_BASE}assets/Gym/speed.webp`,                      category: 'Fitness',  type: 'image' },
+  { src: `${_BASE}assets/Posters/KamalSri1.webp`,              category: 'Cinema',   type: 'image' },
   { src: `${_BASE}assets/Acting/reel/reelItem2.mp4`,           category: 'Reel',     type: 'video' },
-  { src: `${_BASE}assets/Gym/endurence.jpg`,                   category: 'Fitness',  type: 'image' },
-  { src: `${_BASE}assets/Acting/smoke_background1.png`,       category: 'Cinema',   type: 'image' },
-  { src: `${_BASE}assets/wildlife/Hero-Background.jpg`,       category: 'Wildlife',   type: 'image' },
-  { src: `${_BASE}assets/Style/IMG-20260413-WA0053.jpg`,       category: 'Style',    type: 'image' },
-  { src: `${_BASE}assets/Acting/Prabas.jpg`,                  category: 'Acting',  type: 'image' },
-  { src: `${_BASE}assets/Acting/dubbing.jpeg`,                 category: 'Acting',   type: 'image' },
-  { src: `${_BASE}assets/Acting/Anger.jpg`,                    category: 'Acting',   type: 'image' },   
+  { src: `${_BASE}assets/Gym/endurence.webp`,                   category: 'Fitness',  type: 'image' },
+  { src: `${_BASE}assets/Acting/smoke_background1.webp`,       category: 'Cinema',   type: 'image' },
+  { src: `${_BASE}assets/wildlife/Hero-Background.webp`,       category: 'Wildlife',   type: 'image' },
+  { src: `${_BASE}assets/Style/IMG-20260413-WA0053.webp`,       category: 'Style',    type: 'image' },
+  { src: `${_BASE}assets/Acting/Prabas.webp`,                  category: 'Acting',  type: 'image' },
+  { src: `${_BASE}assets/Acting/dubbing.webp`,                 category: 'Acting',   type: 'image' },
+  { src: `${_BASE}assets/Acting/Anger.webp`,                    category: 'Acting',   type: 'image' },   
 ];
 
 export const Home = (_props: HomeProps) => {
@@ -589,7 +589,7 @@ export const Home = (_props: HomeProps) => {
       {/* Mobile hero image */}
      
         <HeroImageMobile
-          src={`${import.meta.env.BASE_URL}assets/Style/IMG_6223.PNG`}
+          src={`${import.meta.env.BASE_URL}assets/Style/IMG_6223.webp`}
           alt="Karthik Shekar Acharya"
         />
    
@@ -598,7 +598,7 @@ export const Home = (_props: HomeProps) => {
       {/* Desktop hero image */}
 
         <HeroImage
-          src={`${import.meta.env.BASE_URL}assets/Style/IMG_6247.PNG`}
+          src={`${import.meta.env.BASE_URL}assets/Style/IMG_6247.webp`}
           alt="Karthik Shekar Acharya"
         />
  
@@ -697,7 +697,7 @@ export const Home = (_props: HomeProps) => {
       {/* ================================================================= */}
       <StatsSection>
         <StatsBgImage
-          src={`${import.meta.env.BASE_URL}assets/Style/towardsCameraB&W.jpg`}
+          src={`${import.meta.env.BASE_URL}assets/Style/towardsCameraB&W.webp`}
           alt=""
         />
         <StatsOverlay />
@@ -918,7 +918,7 @@ export const Home = (_props: HomeProps) => {
                   style={{ cursor: 'pointer' }}
                 >
                   <VideoImage 
-                    src={video.thumbnail || `https://img.youtube.com/vi/${video.videoId}/hqdefault.jpg`} 
+                    src={video.thumbnail || `https://img.youtube.com/vi/${video.videoId}/hqdefault.webp`} 
                     alt={video.title} 
                   />
                   <VideoOverlay />

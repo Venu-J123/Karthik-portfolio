@@ -5,6 +5,7 @@ import { Box } from '@mui/material';
 import * as Styles from './Navigation.style';
 import { PageType, NAV_ITEMS } from '../../../config/constants';
 import { useOptimizedScroll } from '../../hooks';
+import { InstaAvatar } from '@/src/features/acting/Acting.style';
 
 interface NavigationProps {
   currentPage: PageType;
@@ -41,10 +42,11 @@ const NavigationComponent = ({ currentPage, setPage }: NavigationProps) => {
             whileHover={{ scale: 1.02 }}
             transition={{ type: 'spring', stiffness: 400, damping: 20 }}
           >
-            <div className="brand-logo">K</div>
+
+          
             <div className="brand-text">
               <p className="brand-name">KARTHIK</p>
-              <p className="brand-sub">ACHARYA</p>
+              <div className="drawer-sub">SHEKAR ACHARYA</div>
             </div>
           </Styles.BrandButton>
 
@@ -107,10 +109,14 @@ const NavigationComponent = ({ currentPage, setPage }: NavigationProps) => {
               {/* Header */}
               <Styles.DrawerHeader>
                 <Styles.DrawerTitle>
-                  <div className="drawer-logo">K</div>
-                  <div className="drawer-text">
-                    <div className="drawer-name">KARTHIK</div>
-                    <div className="drawer-sub">ACHARYA</div>
+
+                  <InstaAvatar
+                    src={new URL('/assets/Acting/acting.webp', import.meta.url).href}
+                    alt="Karthik Shekar"
+                  />
+                  <div className="brand-text">
+                    <p className="brand-name">KARTHIK</p>
+                    <div className="drawer-sub">SHEKAR ACHARYA</div>
                   </div>
                 </Styles.DrawerTitle>
                 <Styles.DrawerCloseButton

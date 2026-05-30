@@ -299,7 +299,7 @@ const SPECIES_DATA: Species[] = [
     category: 'Venomous',
     danger: 'High',
     color: 'red',
-    image: `${import.meta.env.BASE_URL}assets/wildlife/SpecCobra.jpg`
+    image: `${import.meta.env.BASE_URL}assets/wildlife/SpecCobra.webp`
   },
   {
     name: "Russell's Viper",
@@ -307,7 +307,7 @@ const SPECIES_DATA: Species[] = [
     category: 'Venomous',
     danger: 'High',
     color: 'red',
-    image: `${import.meta.env.BASE_URL}assets/wildlife/RussellsViper.jpg`
+    image: `${import.meta.env.BASE_URL}assets/wildlife/RussellsViper.webp`
   },
   {
     name: 'Indian Rock Python',
@@ -315,7 +315,7 @@ const SPECIES_DATA: Species[] = [
     category: 'Non-Venomous',
     danger: 'Low',
     color: 'green',
-    image: `${import.meta.env.BASE_URL}assets/wildlife/RockPython.jpg`
+    image: `${import.meta.env.BASE_URL}assets/wildlife/RockPython.webp`
   },
   {
     name: 'Common Krait',
@@ -323,7 +323,7 @@ const SPECIES_DATA: Species[] = [
     category: 'Venomous',
     danger: 'High',
     color: 'red',
-    image: `${import.meta.env.BASE_URL}assets/wildlife/common_krait.jpg`
+    image: `${import.meta.env.BASE_URL}assets/wildlife/common_krait.webp`
   },
   {
     name: 'Rat Snake',
@@ -331,7 +331,7 @@ const SPECIES_DATA: Species[] = [
     category: 'Non-Venomous',
     danger: 'Low',
     color: 'green',
-    image: `${import.meta.env.BASE_URL}assets/wildlife/ratSnake.jpg`
+    image: `${import.meta.env.BASE_URL}assets/wildlife/ratSnake.webp`
   },
   {
     name: 'Indian King Cobra',
@@ -339,7 +339,7 @@ const SPECIES_DATA: Species[] = [
     category: 'Venomous',
     danger: 'High',
     color: 'red',
-    image: `${import.meta.env.BASE_URL}assets/wildlife/12_-_The_Mystical_King_Cobra_and_Coffee_Forests.jpg`,
+    image: `${import.meta.env.BASE_URL}assets/wildlife/12_-_The_Mystical_King_Cobra_and_Coffee_Forests.webp`,
     objectPosition: 'center 15%',
   },
 
@@ -351,7 +351,7 @@ const SPECIES_DATA: Species[] = [
     category: 'Venomous',
     danger: 'High',
     color: 'red',
-    image: `${import.meta.env.BASE_URL}assets/wildlife/Malabar_pit_viper.jpg`,
+    image: `${import.meta.env.BASE_URL}assets/wildlife/Malabar_pit_viper.webp`,
     objectPosition: 'center'
   },
 
@@ -361,7 +361,7 @@ const SPECIES_DATA: Species[] = [
     category: 'Non-Venomous',
     danger: 'Low',
     color: 'green',
-    image: `${import.meta.env.BASE_URL}assets/wildlife/Wolf_snake.jpg`,
+    image: `${import.meta.env.BASE_URL}assets/wildlife/Wolf_snake.webp`,
     objectPosition: 'center'
   },
 
@@ -371,7 +371,7 @@ const SPECIES_DATA: Species[] = [
     category: 'Non-Venomous',
     danger: 'Low',
     color: 'green',
-    image: `${import.meta.env.BASE_URL}assets/wildlife/Checkered_Keelback_Xenochrophis_piscator_Schneider,_1799_Assam_by_Dr_Raju_Kasambe_DSC_0477_(2).jpg`,
+    image: `${import.meta.env.BASE_URL}assets/wildlife/Checkered_Keelback_Xenochrophis_piscator_Schneider,_1799_Assam_by_Dr_Raju_Kasambe_DSC_0477_(2).webp`,
     objectPosition: 'center'
   },
 
@@ -382,7 +382,7 @@ const SPECIES_DATA: Species[] = [
     category: 'Non-Venomous',
     danger: 'Low',
     color: 'green',
-    image: `${import.meta.env.BASE_URL}assets/wildlife/Buff_striped_keelback_David_Raju_(cropped).jpg`,
+    image: `${import.meta.env.BASE_URL}assets/wildlife/Buff_striped_keelback_David_Raju_(cropped).webp`,
     objectPosition: 'center'
   },
 
@@ -392,7 +392,7 @@ const SPECIES_DATA: Species[] = [
     category: 'Non-Venomous',
     danger: 'Low',
     color: 'green',
-    image: `${import.meta.env.BASE_URL}assets/wildlife/Bronze_back_tree_snake_at_Mysore_zoo.jpg`,
+    image: `${import.meta.env.BASE_URL}assets/wildlife/Bronze_back_tree_snake_at_Mysore_zoo.webp`,
     objectPosition: 'center'
   },
 
@@ -402,7 +402,7 @@ const SPECIES_DATA: Species[] = [
     category: 'Venomous',
     danger: 'High',
     color: 'red',
-    image: `${import.meta.env.BASE_URL}assets/wildlife/green-wine-snake.jpg`,
+    image: `${import.meta.env.BASE_URL}assets/wildlife/green-wine-snake.webp`,
     objectPosition: 'center'
   },
 ];
@@ -584,7 +584,7 @@ const HeroSectionComponent = () => (
     {/* ── Background layers ── */}
     <HeroBackground>
       <HeroBackgroundImage
-        style={{ backgroundImage: `url(${import.meta.env.BASE_URL}assets/wildlife/Hero-Background.jpg)` }}
+        style={{ backgroundImage: `url(${import.meta.env.BASE_URL}assets/wildlife/Hero-Background.webp)` }}
         initial={{ scale: 1.06 }}
         animate={{ scale: [1.06, 1.0, 1.04, 1.0] }}
         transition={{ duration: 40, repeat: Infinity, ease: 'easeInOut' }}
@@ -942,7 +942,7 @@ const FeaturedRescuesSection = () => {
               >
                 <ThumbnailImage>
                   <img
-                    src={video.thumbnail || `https://img.youtube.com/vi/${video.videoId}/hqdefault.jpg`}
+                    src={video.thumbnail || `https://img.youtube.com/vi/${video.videoId}/hqdefault.webp`}
                     alt={video.title}
                     loading="lazy"
                   />

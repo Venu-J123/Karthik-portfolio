@@ -85,14 +85,14 @@ const BASE = import.meta.env.BASE_URL;
 
 // Background images for each milestone card (by index)
 const BG = [
-  `${BASE}assets/Gym/single_prabakar.jpg`,
-  `${BASE}assets/Gym/IMG-20260413-WA0047.jpg`,
-  `${BASE}assets/Gym/IMG-20260413-WA0079.jpg`,
-  `${BASE}assets/Gym/heroImage2.png`,
-  `${BASE}assets/Gym/IMG-20260413-WA0083.jpg`,
-  `${BASE}assets/Acting/IMG-20260413-WA0016.jpg`,
-  `${BASE}assets/Acting/IMG-20260413-WA0059.jpg`,
-  `${BASE}assets/Style/towardsCameraB&W.jpg`,
+  `${BASE}assets/Gym/single_prabakar.webp`,
+  `${BASE}assets/Gym/IMG-20260413-WA0047.webp`,
+  `${BASE}assets/Gym/IMG-20260413-WA0079.webp`,
+  `${BASE}assets/Gym/heroImage2.webp`,
+  `${BASE}assets/Gym/IMG-20260413-WA0083.webp`,
+  `${BASE}assets/Acting/IMG-20260413-WA0016.webp`,
+  `${BASE}assets/Acting/IMG-20260413-WA0059.webp`,
+  `${BASE}assets/Style/towardsCameraB&W.webp`,
 ];
 
 // Explicit grid positions per milestone (lg = 12-col, md = 4-col)

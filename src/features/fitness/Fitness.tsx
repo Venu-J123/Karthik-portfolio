@@ -167,14 +167,14 @@ const FITNESS_CONTENT = {
         description: 'Boost Your Stamina And Resilience With Tailored Cardio And Endurance Workouts Designed To Keep You Moving Stronger For Longer',
         metric: '95',
         metricLabel: 'BPM',
-        image: `${import.meta.env.BASE_URL}assets/Gym/endurence.jpg`,
+        image: `${import.meta.env.BASE_URL}assets/Gym/endurence.webp`,
       },
       {
         title: 'Speed Surge',
         description: 'Boost Your Agility And Explosiveness With High-Intensity Sprint And Movement Drills. Speed Surge Is Designed To Take Your Performance To The Next Level',
         metric: '1024',
         metricLabel: 'STEPS',
-        image: `${import.meta.env.BASE_URL}assets/Gym/speed2.jpg`,
+        image: `${import.meta.env.BASE_URL}assets/Gym/speed2.webp`,
       },
     ],
   },
@@ -524,22 +524,33 @@ const features = FITNESS_CONTENT.whyUs.features;
 // Testimonials data (kept separate as it's used by carousel component)
 const BASE = import.meta.env.BASE_URL;
 const testimonials = [
-  { name: 'Rajesh Kumar', results: 'Lost 28kg in 6 months', image: `${BASE}assets/Transformations/IMG-20260413-WA0022.jpg` },
-  { name: 'Priya Singh', results: 'Gained 12kg muscle', image: `${BASE}assets/Transformations/IMG-20260413-WA0024.jpg` },
-  { name: 'Arjun Patel', results: 'Won competition', image: `${BASE}assets/Transformations/IMG-20260413-WA0025.jpg` },
-  { name: 'Sneha Reddy', results: 'Lost 15kg in 4 months', image: `${BASE}assets/Transformations/IMG-20260413-WA0049.jpg` },
-  { name: 'Vikram Malhotra', results: 'Increased strength 200%', image: `${BASE}assets/Transformations/IMG-20260413-WA0051.jpg` },
-  { name: 'Ananya Sharma', results: 'Body fat 32% to 18%', image: `${BASE}assets/Transformations/IMG-20260413-WA0075.jpg` },
-  { name: 'Rohit Desai', results: 'Marathon ready in 5 months', image: `${BASE}assets/Transformations/IMG-20260413-WA0077.jpg` },
-  { name: 'Kavya Menon', results: 'Gained 8kg lean muscle', image: `${BASE}assets/Transformations/IMG-20260413-WA0103.jpg` },
-  { name: 'Aditya Iyer', results: 'Lost 35kg in 8 months', image: `${BASE}assets/Transformations/IMG-20260413-WA0104.jpg` },
-  { name: 'Meera Nair', results: 'Complete body transformation', image: `${BASE}assets/Transformations/IMG-20260413-WA0105.jpg` },
-  { name: 'Aditya Iyer', results: 'Lost 35kg in 8 months', image: `${BASE}assets/Transformations/TF1.jpeg` },
-  { name: 'Aditya Iyer', results: 'Lost 35kg in 8 months', image: `${BASE}assets/Transformations/TF2.jpg` },
-  { name: 'Aditya Iyer', results: 'Lost 35kg in 8 months', image: `${BASE}assets/Transformations/TF3.jpg` },
-  { name: 'Aditya Iyer', results: 'Lost 35kg in 8 months', image: `${BASE}assets/Transformations/TF4.jpg` },
-  { name: 'Aditya Iyer', results: 'Lost 35kg in 8 months', image: `${BASE}assets/Transformations/TF5.jpeg` },
-  { name: 'Aditya Iyer', results: 'Lost 35kg in 8 months', image: `${BASE}assets/Transformations/TF7.jpeg` },
+  { name: 'Rajesh Kumar', results: 'Lost 28kg in 6 months', image: `${BASE}assets/Transformations/IMG-20260413-WA0022.webp` },
+
+  { name: 'Priya Singh', results: 'Gained 12kg muscle', image: `${BASE}assets/Transformations/IMG-20260413-WA0024.webp` },
+
+  { name: 'Arjun Patel', results: 'Won competition', image: `${BASE}assets/Transformations/IMG-20260413-WA0025.webp` },
+
+  { name: 'Sneha Reddy', results: 'Lost 15kg in 4 months', image: `${BASE}assets/Transformations/IMG-20260413-WA0049.webp` },
+
+  { name: 'Vikram Malhotra', results: 'Increased strength 200%', image: `${BASE}assets/Transformations/IMG-20260413-WA0051.webp` },
+
+  { name: 'Ananya Sharma', results: 'Body fat 32% to 18%', image: `${BASE}assets/Transformations/IMG-20260413-WA0075.webp` },
+
+  { name: 'Rohit Desai', results: 'Marathon ready in 5 months', image: `${BASE}assets/Transformations/IMG-20260413-WA0077.webp` },
+
+  { name: 'Kavya Menon', results: 'Gained 8kg lean muscle', image: `${BASE}assets/Transformations/IMG-20260413-WA0103.webp` },
+
+  { name: 'Aditya Iyer', results: 'Lost 35kg in 8 months', image: `${BASE}assets/Transformations/IMG-20260413-WA0104.webp` },
+
+  { name: 'Meera Nair', results: 'Complete body transformation', image: `${BASE}assets/Transformations/IMG-20260413-WA0105.webp` },
+
+  // already non-jpg formats (kept as is)
+  { name: 'Aditya Iyer', results: 'Lost 35kg in 8 months', image: `${BASE}assets/Transformations/TF1.webp` },
+  { name: 'Aditya Iyer', results: 'Lost 35kg in 8 months', image: `${BASE}assets/Transformations/TF2.webp` },
+  { name: 'Aditya Iyer', results: 'Lost 35kg in 8 months', image: `${BASE}assets/Transformations/TF3.webp` },
+  { name: 'Aditya Iyer', results: 'Lost 35kg in 8 months', image: `${BASE}assets/Transformations/TF4.webp` },
+  { name: 'Aditya Iyer', results: 'Lost 35kg in 8 months', image: `${BASE}assets/Transformations/TF5.webp` },
+  { name: 'Aditya Iyer', results: 'Lost 35kg in 8 months', image: `${BASE}assets/Transformations/TF7.webp` },
 ];
 
 export const Fitness = ({ setPage }: FitnessProps) => {
@@ -583,7 +594,7 @@ export const Fitness = ({ setPage }: FitnessProps) => {
       <HeroSection>
         {/* Mobile hero image — shown only below md */}
         <FitnessHeroImageMobile
-          src={`${import.meta.env.BASE_URL}assets/Gym/Filtness_home.jpg`}
+          src={`${import.meta.env.BASE_URL}assets/Gym/Filtness_home.webp`}
           alt="Fitness Hero"
         />
 
@@ -596,7 +607,7 @@ export const Fitness = ({ setPage }: FitnessProps) => {
             style={{ width: '100%', height: '100%' }}
           >
             <img
-              src={`${import.meta.env.BASE_URL}assets/Gym/IMG-20260413-WA0083.jpg`}
+              src={`${import.meta.env.BASE_URL}assets/Gym/IMG-20260413-WA0083.webp`}
               alt="Fitness Hero"
               loading="eager"
             />

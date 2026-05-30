@@ -11,14 +11,13 @@ interface FooterProps {
 export const Footer = ({ setPage }: FooterProps) => {
   const mainLinks: { label: string; value: PageType }[] = [
     { label: 'Home', value: 'home' },
-    { label: 'Journey', value: 'journey' },
     { label: 'Contact', value: 'contact' },
   ];
 
   const servicesLinks: { label: string; value: PageType }[] = [
-    { label: 'Fitness & Training', value: 'fitness' },
-    { label: 'Acting Portfolio', value: 'acting' },
-    { label: 'Wildlife Rescue', value: 'wildlife' },
+    { label: 'Fitness', value: 'fitness' },
+    { label: 'Acting ', value: 'acting' },
+    { label: 'Wildlife', value: 'wildlife' },
   ];
 
   return (
