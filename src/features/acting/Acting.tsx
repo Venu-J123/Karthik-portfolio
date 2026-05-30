@@ -7,6 +7,7 @@ import { PageType, PAGES } from '../../config/constants';
 import { GLOBAL_CONFIG } from '../../config/global.config';
 import { FadeIn, SlideIn, Stagger, ScaleIn, ZoomIn } from '../../shared/components';
 import { ShowreelStack, ActingBits, PressReviews } from './components';
+
 import {
 
   ActingWrapper,
@@ -283,7 +284,7 @@ export const Acting = ({ setPage }: ActingProps) => {
             <CinematicHeroImageWrapper>
 
               <CinematicHeroImage
-                src={`${import.meta.env.BASE_URL}/assets/Acting/towardsCameraB&W.jpg`}
+                src="/assets/Acting/acting.jpg"
                 alt="Karthik Shekar Acharya"
               />
 
@@ -297,7 +298,7 @@ export const Acting = ({ setPage }: ActingProps) => {
 
               <CinematicHeroStat>
                 <CinematicHeroStatValue>
-                  08+
+                  10+
                 </CinematicHeroStatValue>
 
                 <CinematicHeroStatLabel>
@@ -456,16 +457,27 @@ export const Acting = ({ setPage }: ActingProps) => {
               </Box>
 
               {/* Right — Instagram promo */}
-              <InstaPromoBox>
+              <InstaPromoBox
+              >
                 <InstaAvatar
-                  src={`${import.meta.env.BASE_URL}assets/Acting/towardsCameraB&W.jpg`}
+                  src={new URL('/assets/Acting/acting.jpg', import.meta.url).href}
                   alt="Karthik Shekar"
                 />
                 <Box>
                   <InstaPromoTitle>Follow my Instagram</InstaPromoTitle>
                   <InstaPromoSubtext>
                     Behind-the-scenes, reels and updates at{' '}
-                    <InstaPromoHandle>@karthik_shekar</InstaPromoHandle>
+                    <InstaPromoHandle
+                      onClick={() => window.open(`${GLOBAL_CONFIG.social.instagram.url}`, '_blank', 'noopener,noreferrer')}
+                sx={{ cursor: 'pointer' }}
+                role="button"
+                tabIndex={0}
+                aria-label="Follow my Instagram"
+                onKeyPress={e => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    window.open(`${GLOBAL_CONFIG.social.instagram.url}`, '_blank', 'noopener,noreferrer');
+                  }
+                }}>{GLOBAL_CONFIG.social.instagram.handle}</InstaPromoHandle>
                   </InstaPromoSubtext>
                 </Box>
               </InstaPromoBox>

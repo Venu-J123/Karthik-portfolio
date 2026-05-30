@@ -214,38 +214,125 @@ const FITNESS_CONTENT = {
     ],
   },
 
-  pricing: {
-    label: 'Plans',
-    title: 'Membership',
-    titleHighlight: 'Plans',
-    description: 'Choose the perfect plan for your fitness journey',
-    popularBadge: 'MOST POPULAR',
-    button: 'Choose Plan',
-    sections: [
-      {
-        title: 'Monthly Gym',
-        plans: [
-          { duration: '1 Month', price: '₹2,000', perMonth: '₹2,000', highlighted: false, features: ['Full gym access', 'Basic equipment', 'Open hours', '5 free classes'] },
-          { duration: '3 Months', price: '₹3,500', perMonth: '₹1,167', originalPrice: '₹4,500', highlighted: false, features: ['Full gym access', 'All equipment', 'Extended hours', 'Unlimited classes'] },
-          { duration: '6 Months', price: '₹4,800', perMonth: '₹800', originalPrice: '₹6,000', savingsLabel: 'Save ₹1,200', highlighted: true, features: ['Full gym access', 'Premium equipment', '24/7 access', 'Unlimited classes', 'Nutrition guide'] },
-          { duration: '12 Months', price: '₹6,999', perMonth: '₹583', originalPrice: '₹7,999', savingsLabel: 'Save ₹1,000', highlighted: false, features: ['Everything included', 'Priority booking', 'Guest passes', 'Exclusive community'] },
-        ],
-      },
-      {
-        title: 'Personal Training',
-        plans: [
-          { duration: '12 Sessions — Single', price: '₹10,000', originalPrice: '₹12,000', savingsLabel: 'Save ₹2,000', highlighted: false, features: ['12 one-on-one sessions', 'Custom workout plan', 'Progress tracking', 'Nutrition guidance'] },
-          { duration: '12 Sessions — Couples', price: '₹17,000', originalPrice: '₹20,000', savingsLabel: 'Save ₹3,000', highlighted: true, features: ['12 sessions for 2', 'Partner workout plans', 'Progress tracking', 'Nutrition guidance'] },
-        ],
-      },
-      {
-        title: 'Personal Training in Power House Gym',
-        plans: [
-          { duration: '12 Sessions', price: '₹6,999', originalPrice: '₹7,999', savingsLabel: 'Save ₹2,000', highlighted: true, features: ['Gym access included', 'Dedicated trainer', 'Custom workout plan', 'Nutrition consultation', 'Progress tracking'] },
-        ],
-      },
-    ],
-  },
+pricing: {
+  label: 'Plans',
+  title: 'Membership',
+  titleHighlight: 'Plans',
+  description: 'Choose the perfect plan for your fitness journey',
+  popularBadge: 'MOST POPULAR',
+  button: 'Choose Plan',
+  sections: [
+    {
+      title: 'Monthly Gym',
+      plans: [
+        {
+          duration: '1 Month',
+          price: '₹2,000',
+          perMonth: '₹2,000',
+          highlighted: false,
+          features: [
+            'Full gym access',
+            'Basic equipment',
+            'Open hours',
+            '5 free classes',
+          ],
+        },
+        {
+          duration: '3 Months',
+          price: '₹3,800',
+          perMonth: '₹1,267',
+          originalPrice: '₹4,800',
+          highlighted: false,
+          features: [
+            'Full gym access',
+            'All equipment',
+            'Extended hours',
+            'Unlimited classes',
+          ],
+        },
+        {
+          duration: '6 Months',
+          price: '₹4,800',
+          perMonth: '₹800',
+          originalPrice: '₹6,000',
+          savingsLabel: 'Save ₹1,200',
+          highlighted: true,
+          features: [
+            'Full gym access',
+            'Premium equipment',
+            '24/7 access',
+            'Unlimited classes',
+            'Nutrition guide',
+          ],
+        },
+        {
+          duration: '12 Months',
+          price: '₹7,999',
+          perMonth: '₹667',
+          originalPrice: '₹8,999',
+          savingsLabel: 'Save ₹1,000',
+          highlighted: false,
+          features: [
+            'Everything included',
+            'Priority booking',
+            'Guest passes',
+            'Exclusive community',
+          ],
+        },
+      ],
+    },
+    {
+      title: 'Personal Training',
+      plans: [
+        {
+          duration: '12 Sessions — Single',
+          price: '₹15,000',
+          originalPrice: '₹18,000',
+          savingsLabel: 'Save ₹3,000',
+          highlighted: false,
+          features: [
+            '12 one-on-one sessions',
+            'Custom workout plan',
+            'Progress tracking',
+            'Nutrition guidance',
+          ],
+        },
+        {
+          duration: '12 Sessions — Couples',
+          price: '₹25,000',
+          originalPrice: '₹30,000',
+          savingsLabel: 'Save ₹5,000',
+          highlighted: true,
+          features: [
+            '12 sessions for 2',
+            'Partner workout plans',
+            'Progress tracking',
+            'Nutrition guidance',
+          ],
+        },
+      ],
+    },
+    {
+      title: 'Personal Training in Power House Gym',
+      plans: [
+        {
+          duration: '12 Sessions',
+          price: '₹10,000',
+          originalPrice: '₹15,000',
+          savingsLabel: 'Save ₹5,000',
+          highlighted: true,
+          features: [
+            'Gym access included',
+            'Dedicated trainer',
+            'Custom workout plan',
+            'Nutrition consultation',
+            'Progress tracking',
+          ],
+        },
+      ],
+    },
+  ],
+},
 
   facility: {
     label: 'Facility',

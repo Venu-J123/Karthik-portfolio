@@ -16,7 +16,7 @@ export const GLOBAL_CONFIG = {
     phone: '+918867300889',
     phoneDisplay: '+91 88673 00889',
     phoneWhatsApp: '918867300889', // Without + for WhatsApp API
-    email: 'training@karthikpro.com',
+    email: 'phgymkarthik6@gmail.com',
     address: {
       short: 'Sarjapur Rd, Bengaluru, Karnataka',
       full: 'Ambalipura - Sarjapur Rd, Dommasandra, Bengaluru, Karnataka 562125',
