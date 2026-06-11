@@ -16,7 +16,6 @@ import Star from '@mui/icons-material/Star';
 import { PAGES, PageType } from '../../config/constants';
 import { GLOBAL_CONFIG } from '../../config/global.config';
 import { StatCard, FadeIn, SlideIn, Stagger, ScaleIn, Bounce } from '../../shared/components';
-import { useInfiniteScroll } from '../../shared/hooks';
 import { JOURNEY_MILESTONES } from './journeyData';
 import {
   HomeWrapper,
@@ -94,6 +93,8 @@ import {
   JourneyCTAButton,
   TimelineFadeLeft,
   TimelineFadeRight,
+  ParticleContainer,
+  TimelineParticle,
 } from './Home.style';
 import { PlayBadge } from '../journey/Journey.style';
 
@@ -408,6 +409,19 @@ const HOME_CONTENT = {
 const TAGLINES = HOME_CONTENT.taglines;
 const MARQUEE_ITEMS = HOME_CONTENT.marquee;
 
+// Configuration for timeline flow particles
+const TIMELINE_PARTICLES = [
+  { color: '#f59e0b', duration: 10, delay: 0, size: 6, offsety: 0 },
+  { color: '#3b82f6', duration: 14, delay: 2, size: 8, offsety: -8 },
+  { color: '#059669', duration: 8, delay: 4, size: 5, offsety: 8 },
+  { color: '#D4AF37', duration: 12, delay: 1, size: 7, offsety: -4 },
+  { color: '#f59e0b', duration: 16, delay: 6, size: 4, offsety: 4 },
+  { color: '#3b82f6', duration: 11, delay: 3, size: 6, offsety: -6 },
+  { color: '#059669', duration: 9, delay: 5, size: 7, offsety: 6 },
+  { color: '#D4AF37', duration: 13, delay: 7, size: 9, offsety: -10 },
+  { color: '#f59e0b', duration: 15, delay: 8, size: 5, offsety: 10 },
+];
+
 // Gallery carousel — images + reels from all asset folders
 const _BASE = import.meta.env.BASE_URL;
 
@@ -577,7 +591,56 @@ export const Home = (_props: HomeProps) => {
 
   // Infinite horizontal scrollable timeline
   const timelineScrollRef = useRef<HTMLDivElement>(null);
-  useInfiniteScroll(timelineScrollRef, { speed: 0.6, pauseOnHover: true });
+
+  // Bidirectional auto-scrolling (yo-yo scroll between start and end)
+  useEffect(() => {
+    const container = timelineScrollRef.current;
+    if (!container) return;
+
+    const SPEED = 0.6; // Pixels per frame
+    let animId: number;
+    const directionRef = { current: 'forward' }; // 'forward' or 'backward'
+    const isPausedRef = { current: false };
+
+    const run = () => {
+      if (!isPausedRef.current) {
+        const maxScroll = container.scrollWidth - container.clientWidth;
+        
+        if (maxScroll > 0) {
+          if (directionRef.current === 'forward') {
+            container.scrollLeft += SPEED;
+            if (container.scrollLeft >= maxScroll - 1) {
+              directionRef.current = 'backward';
+            }
+          } else {
+            container.scrollLeft -= SPEED;
+            if (container.scrollLeft <= 1) {
+              directionRef.current = 'forward';
+            }
+          }
+        }
+      }
+      animId = requestAnimationFrame(run);
+    };
+
+    const handleMouseEnter = () => { isPausedRef.current = true; };
+    const handleMouseLeave = () => { isPausedRef.current = false; };
+
+    container.addEventListener('mouseenter', handleMouseEnter);
+    container.addEventListener('mouseleave', handleMouseLeave);
+    container.addEventListener('touchstart', handleMouseEnter, { passive: true });
+    container.addEventListener('touchend', handleMouseLeave, { passive: true });
+
+    animId = requestAnimationFrame(run);
+
+    return () => {
+      cancelAnimationFrame(animId);
+      container.removeEventListener('mouseenter', handleMouseEnter);
+      container.removeEventListener('mouseleave', handleMouseLeave);
+      container.removeEventListener('touchstart', handleMouseEnter);
+      container.removeEventListener('touchend', handleMouseLeave);
+    };
+  }, []);
 
 
   return (
@@ -879,13 +942,27 @@ export const Home = (_props: HomeProps) => {
             <TimelineWrapper>
               <TimelineLine />
               
-              {/* Render 3 copies of milestones for seamless looping */}
-              {[...JOURNEY_MILESTONES, ...JOURNEY_MILESTONES, ...JOURNEY_MILESTONES].map((milestone, index) => {
+              {/* Animated Flowing Particles */}
+              <ParticleContainer>
+                {TIMELINE_PARTICLES.map((p, pi) => (
+                  <TimelineParticle
+                    key={pi}
+                    particlecolor={p.color}
+                    duration={p.duration}
+                    delay={p.delay}
+                    size={p.size}
+                    offsety={p.offsety}
+                  />
+                ))}
+              </ParticleContainer>
+              
+              {/* Render milestones once for a start-to-end user-controlled timeline */}
+              {JOURNEY_MILESTONES.map((milestone) => {
                 const itemColor = milestone.color;
                 const IconComponent = milestone.icon;
                 
                 return (
-                  <TimelineItem key={`${milestone.id}-${index}`}>
+                  <TimelineItem key={milestone.id}>
                     <TimelineCard>
                       <CategoryBadge categorycolor={itemColor}>
                         {milestone.category}

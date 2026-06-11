@@ -2026,3 +2026,155 @@ export const JourneyCTAButton = styled(motion.button)(({ theme }) => ({
   },
 }));
 
+// ============================================================================
+// JOURNEY PROGRESS INDICATOR & PARTICLES
+// ============================================================================
+
+export const ProgressContainer = styled(Box)(({ theme }) => ({
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  marginBottom: theme.spacing(4),
+  marginTop: theme.spacing(2),
+  width: '100%',
+  position: 'relative',
+  zIndex: 5,
+}));
+
+export const ProgressLabel = styled(Box)(({ theme }) => ({
+  fontSize: '0.75rem',
+  fontWeight: 900,
+  textTransform: 'uppercase',
+  letterSpacing: '0.2em',
+  color: 'rgba(255, 255, 255, 0.45)',
+  fontFamily: 'Montserrat, sans-serif',
+}));
+
+export const ProgressTrack = styled(Box)(({ theme }) => ({
+  position: 'relative',
+  width: '100%',
+  maxWidth: '500px',
+  height: '6px',
+  background: 'rgba(255, 255, 255, 0.05)',
+  borderRadius: '3px',
+  border: '1px solid rgba(255, 255, 255, 0.1)',
+  overflow: 'visible',
+  boxShadow: 'inset 0 1px 3px rgba(0,0,0,0.5)',
+  marginTop: theme.spacing(1),
+  marginBottom: theme.spacing(1),
+}));
+
+export const ProgressFill = styled(Box)<{ progress: number }>(({ theme, progress }) => ({
+  position: 'absolute',
+  top: 0,
+  left: 0,
+  height: '100%',
+  width: `${progress}%`,
+  background: 'linear-gradient(90deg, #3b82f6 0%, #f59e0b 50%, #D4AF37 100%)',
+  borderRadius: '3px',
+  boxShadow: '0 0 8px rgba(212, 175, 55, 0.5), 0 0 16px rgba(212, 175, 55, 0.3)',
+  transition: 'width 0.1s ease-out',
+}));
+
+export const ProgressThumb = styled(Box)<{ progress: number }>(({ theme, progress }) => ({
+  position: 'absolute',
+  top: '50%',
+  left: `${progress}%`,
+  transform: 'translate(-50%, -50%)',
+  width: '16px',
+  height: '16px',
+  borderRadius: '50%',
+  backgroundColor: '#D4AF37',
+  border: '2px solid #fff',
+  boxShadow: '0 0 12px #D4AF37, 0 0 20px #D4AF37',
+  transition: 'left 0.1s ease-out',
+  zIndex: 10,
+}));
+
+export const ProgressTooltip = styled(Box)(({ theme }) => ({
+  position: 'absolute',
+  bottom: '22px',
+  transform: 'translateX(-50%)',
+  backgroundColor: 'rgba(10, 29, 44, 0.95)',
+  border: '1px solid #D4AF37',
+  borderRadius: '6px',
+  padding: '2px 6px',
+  fontSize: '0.75rem',
+  fontWeight: 700,
+  color: '#D4AF37',
+  boxShadow: '0 4px 10px rgba(0,0,0,0.5), 0 0 8px rgba(212, 175, 55, 0.2)',
+  whiteSpace: 'nowrap',
+  pointerEvents: 'none',
+  fontFamily: 'Montserrat, sans-serif',
+  '&::after': {
+    content: '""',
+    position: 'absolute',
+    top: '100%',
+    left: '50%',
+    transform: 'translateX(-50%)',
+    borderWidth: '5px',
+    borderStyle: 'solid',
+    borderColor: 'rgba(10, 29, 44, 0.95) transparent transparent transparent',
+  },
+}));
+
+export const ParticleContainer = styled(Box)({
+  position: 'absolute',
+  top: '50%',
+  left: 0,
+  right: 0,
+  height: '40px',
+  transform: 'translateY(-50%)',
+  pointerEvents: 'none',
+  zIndex: 1,
+  overflow: 'hidden',
+});
+
+export const TimelineParticle = styled(Box)<{ 
+  particlecolor: string; 
+  duration: number; 
+  delay: number; 
+  size: number;
+  offsety: number;
+}>(({ particlecolor, duration, delay, size, offsety }) => ({
+  position: 'absolute',
+  top: '50%',
+  width: `${size}px`,
+  height: `${size}px`,
+  borderRadius: '50%',
+  backgroundColor: particlecolor,
+  boxShadow: `0 0 8px ${particlecolor}, 0 0 16px ${particlecolor}`,
+  opacity: 0,
+  animation: `flowParticle ${duration}s linear infinite`,
+  animationDelay: `${delay}s`,
+
+  '@keyframes flowParticle': {
+    '0%': {
+      left: '0%',
+      transform: `translateY(-50%) translateY(${offsety}px)`,
+      opacity: 0,
+    },
+    '5%': {
+      opacity: 0.8,
+    },
+    '25%': {
+      transform: `translateY(-50%) translateY(${offsety - 6}px)`,
+    },
+    '50%': {
+      transform: `translateY(-50%) translateY(${offsety + 6}px)`,
+    },
+    '75%': {
+      transform: `translateY(-50%) translateY(${offsety - 6}px)`,
+    },
+    '95%': {
+      opacity: 0.8,
+    },
+    '100%': {
+      left: '100%',
+      transform: `translateY(-50%) translateY(${offsety}px)`,
+      opacity: 0,
+    },
+  },
+}));
+
+
