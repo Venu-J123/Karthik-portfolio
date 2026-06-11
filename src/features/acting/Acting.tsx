@@ -215,6 +215,101 @@ export const Acting = ({ setPage }: ActingProps) => {
       {/* ==================== HERO SECTION ==================== */}
       <HeroStickyWrapper>
         <CinematicHeroSection>
+          {/* Theater/Spotlight SVG Background */}
+          <Box sx={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', pointerEvents: 'none', zIndex: 1, overflow: 'hidden', display: 'flex' }}>
+            <svg viewBox="0 0 1400 800" preserveAspectRatio="xMidYMid slice" style={{ opacity: 0.2, width: '100%', height: '100%' }}>
+              <defs>
+                <linearGradient id="stageGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#1a1a2e" />
+                  <stop offset="50%" stopColor="#16213e" />
+                  <stop offset="100%" stopColor="#0f3460" />
+                </linearGradient>
+                <radialGradient id="spotlightGlow" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stopColor="#ffeb3b" stopOpacity="0.6" />
+                  <stop offset="60%" stopColor="#ff9800" stopOpacity="0.3" />
+                  <stop offset="100%" stopColor="#0f3460" stopOpacity="0" />
+                </radialGradient>
+                <style>{`
+                  @keyframes spotlightSweep { 0% { transform: translateX(-200px); } 50% { transform: translateX(1200px); } 100% { transform: translateX(-200px); } }
+                  @keyframes filmSpinSlow { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+                  @keyframes flicker { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
+                  @keyframes shimmerStage { 0% { strokeDashoffset: 200; } 100% { strokeDashoffset: 0; } }
+                  .spotlight { animation: spotlightSweep 8s ease-in-out infinite; }
+                  .film-reel { animation: filmSpinSlow 20s linear infinite; }
+                  .flicker { animation: flicker 3s ease-in-out infinite; }
+                  .stage-shimmer { animation: shimmerStage 4s ease-in-out infinite; }
+                `}</style>
+              </defs>
+              <rect width="1400" height="800" fill="url(#stageGradient)" />
+              
+              {/* Left Spotlight Beam */}
+              <g className="spotlight" style={{ animationDelay: '0s' }}>
+                <ellipse cx="100" cy="200" rx="150" ry="300" fill="url(#spotlightGlow)" opacity="0.4" />
+                <polygon points="50,0 150,0 180,800 20,800" fill="#ffeb3b" opacity="0.1" />
+              </g>
+              
+              {/* Center Spotlight Beam */}
+              <g className="spotlight" style={{ animationDelay: '2.5s' }}>
+                <ellipse cx="700" cy="300" rx="200" ry="350" fill="url(#spotlightGlow)" opacity="0.35" />
+                <polygon points="600,0 800,0 850,800 550,800" fill="#ffeb3b" opacity="0.08" />
+              </g>
+              
+              {/* Right Spotlight Beam */}
+              <g className="spotlight" style={{ animationDelay: '5s' }}>
+                <ellipse cx="1300" cy="250" rx="150" ry="320" fill="url(#spotlightGlow)" opacity="0.4" />
+                <polygon points="1250,0 1350,0 1380,800 1220,800" fill="#ffeb3b" opacity="0.1" />
+              </g>
+              
+              {/* Film Reel Left */}
+              <g className="film-reel" style={{ transformOrigin: '200px 600px', animationDelay: '0s' }}>
+                <circle cx="200" cy="600" r="60" fill="none" stroke="#ff6f00" strokeWidth="2" opacity="0.5" />
+                <circle cx="200" cy="600" r="50" fill="none" stroke="#ff6f00" strokeWidth="1" opacity="0.3" />
+                {Array.from({ length: 6 }).map((_, i) => (
+                  <line key={i} x1="200" y1="600" x2={200 + 50 * Math.cos((i * Math.PI) / 3)} y2={600 + 50 * Math.sin((i * Math.PI) / 3)} stroke="#ff6f00" strokeWidth="2" opacity="0.4" />
+                ))}
+              </g>
+              
+              {/* Film Reel Right */}
+              <g className="film-reel" style={{ transformOrigin: '1200px 650px', animationDelay: '8s', transform: 'scaleX(-1)' }}>
+                <circle cx="1200" cy="650" r="60" fill="none" stroke="#ff6f00" strokeWidth="2" opacity="0.5" />
+                <circle cx="1200" cy="650" r="50" fill="none" stroke="#ff6f00" strokeWidth="1" opacity="0.3" />
+                {Array.from({ length: 6 }).map((_, i) => (
+                  <line key={i} x1="1200" y1="650" x2={1200 + 50 * Math.cos((i * Math.PI) / 3)} y2={650 + 50 * Math.sin((i * Math.PI) / 3)} stroke="#ff6f00" strokeWidth="2" opacity="0.4" />
+                ))}
+              </g>
+              
+              {/* Stage Curtain Lines */}
+              <g className="stage-shimmer">
+                <path d="M 0,0 Q 350,100 700,0 T 1400,0" stroke="#ff9800" strokeWidth="2" fill="none" opacity="0.3" strokeDasharray="200" />
+              </g>
+              
+              {/* Horizontal Stage Lights */}
+              <g className="flicker" style={{ animationDelay: '0s' }}>
+                <circle cx="150" cy="80" r="8" fill="#ffeb3b" opacity="0.6" />
+              </g>
+              <g className="flicker" style={{ animationDelay: '0.4s' }}>
+                <circle cx="400" cy="100" r="8" fill="#ffeb3b" opacity="0.5" />
+              </g>
+              <g className="flicker" style={{ animationDelay: '0.8s' }}>
+                <circle cx="700" cy="90" r="8" fill="#ffeb3b" opacity="0.6" />
+              </g>
+              <g className="flicker" style={{ animationDelay: '1.2s' }}>
+                <circle cx="1000" cy="100" r="8" fill="#ffeb3b" opacity="0.5" />
+              </g>
+              <g className="flicker" style={{ animationDelay: '1.6s' }}>
+                <circle cx="1250" cy="85" r="8" fill="#ffeb3b" opacity="0.6" />
+              </g>
+              
+              {/* Film Strip Border */}
+              <g opacity="0.25">
+                <rect x="10" y="10" width="1380" height="780" fill="none" stroke="#ff9800" strokeWidth="3" />
+                {Array.from({ length: 20 }).map((_, i) => (
+                  <rect key={i} x={70 + i * 65} y="20" width="45" height="20" fill="none" stroke="#ff6f00" strokeWidth="1" />
+                ))}
+              </g>
+            </svg>
+          </Box>
+          
           <CinematicHeroGrid>
 
             {/* LEFT CONTENT */}
@@ -629,23 +724,29 @@ export const Acting = ({ setPage }: ActingProps) => {
           <Stagger staggerDelay={0.04}>
             <GalleryGrid>
               {galleryImages.map((item, i) => (
-                <GalleryItem
+                <motion.div
                   key={i}
-                  className="GalleryItem"
-                  sx={{
-                    gridColumn: item.span.split(' ')[0].replace('col-span-', 'span '),
-                    gridRow: item.span.split(' ').find(s => s.includes('row-span'))?.replace('row-span-', 'span ') || 'span 1',
-                  }}
+                  whileHover={{ scale: 1.04, y: -8 }}
+                  transition={{ duration: 0.3 }}
+                  style={{ gridColumn: item.span.split(' ')[0].replace('col-span-', 'span '), gridRow: item.span.split(' ').find(s => s.includes('row-span'))?.replace('row-span-', 'span ') || 'span 1' }}
                 >
-                  <img
-                    src={`${import.meta.env.BASE_URL}assets/${item.src}`}
-                    alt=""
-                  />
-                  <GalleryItemOverlay />
-                  <GalleryItemBorder />
-                  <GalleryItemCorner />
-                  <GalleryItemScanLine />
-                </GalleryItem>
+                  <GalleryItem
+                    className="GalleryItem"
+                    sx={{
+                      gridColumn: 'unset',
+                      gridRow: 'unset',
+                    }}
+                  >
+                    <img
+                      src={`${import.meta.env.BASE_URL}assets/${item.src}`}
+                      alt=""
+                    />
+                    <GalleryItemOverlay />
+                    <GalleryItemBorder />
+                    <GalleryItemCorner />
+                    <GalleryItemScanLine />
+                  </GalleryItem>
+                </motion.div>
               ))}
             </GalleryGrid>
           </Stagger>

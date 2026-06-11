@@ -179,6 +179,94 @@ export const Contact = () => {
 
   return (
     <Styles.ContactWrapper>
+      {/* Network Connection SVG Background */}
+      <Box sx={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', pointerEvents: 'none', zIndex: 0, overflow: 'hidden', display: 'flex' }}>
+        <svg viewBox="0 0 1400 900" preserveAspectRatio="xMidYMid slice" style={{ opacity: 0.12, width: '100%', height: '100%' }}>
+          <defs>
+            <linearGradient id="networkGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#0f172a" />
+              <stop offset="50%" stopColor="#1e293b" />
+              <stop offset="100%" stopColor="#0f172a" />
+            </linearGradient>
+            <radialGradient id="nodeGlow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stopColor="#0ea5e9" stopOpacity="1" />
+              <stop offset="100%" stopColor="#0ea5e9" stopOpacity="0" />
+            </radialGradient>
+            <style>{`
+              @keyframes nodePulse { 0%, 100% { r: 6; opacity: 0.8; } 50% { r: 10; opacity: 0.4; } }
+              @keyframes lineDraw { 0% { strokeDashoffset: 300; } 100% { strokeDashoffset: 0; } }
+              @keyframes flowParticle { 0% { offset-distance: 0%; opacity: 1; } 100% { offset-distance: 100%; opacity: 0; } }
+              @keyframes connectionGlow { 0%, 100% { filter: drop-shadow(0 0 2px #0ea5e9); } 50% { filter: drop-shadow(0 0 8px #0ea5e9); } }
+              .node-pulse { animation: nodePulse 2s ease-in-out infinite; }
+              .line-draw { animation: lineDraw 3s ease-in-out infinite; }
+              .connection-glow { animation: connectionGlow 2.5s ease-in-out infinite; }
+            `}</style>
+          </defs>
+          <rect width="1400" height="900" fill="url(#networkGradient)" />
+          
+          {/* Network Nodes */}
+          <circle className="node-pulse" cx="200" cy="150" r="6" fill="url(#nodeGlow)" style={{ animationDelay: '0s' }} />
+          <circle className="node-pulse" cx="700" cy="100" r="6" fill="url(#nodeGlow)" style={{ animationDelay: '0.3s' }} />
+          <circle className="node-pulse" cx="1200" cy="180" r="6" fill="url(#nodeGlow)" style={{ animationDelay: '0.6s' }} />
+          <circle className="node-pulse" cx="150" cy="450" r="6" fill="url(#nodeGlow)" style={{ animationDelay: '0.9s' }} />
+          <circle className="node-pulse" cx="700" cy="500" r="8" fill="url(#nodeGlow)" style={{ animationDelay: '1.2s' }} />
+          <circle className="node-pulse" cx="1250" cy="480" r="6" fill="url(#nodeGlow)" style={{ animationDelay: '1.5s' }} />
+          <circle className="node-pulse" cx="350" cy="750" r="6" fill="url(#nodeGlow)" style={{ animationDelay: '1.8s' }} />
+          <circle className="node-pulse" cx="700" cy="800" r="6" fill="url(#nodeGlow)" style={{ animationDelay: '2.1s' }} />
+          <circle className="node-pulse" cx="1100" cy="750" r="6" fill="url(#nodeGlow)" style={{ animationDelay: '2.4s' }} />
+          
+          {/* Connection Lines */}
+          <g className="connection-glow">
+            <path d="M 200,150 L 700,100" stroke="#0ea5e9" strokeWidth="1.5" fill="none" opacity="0.4" strokeDasharray="200" className="line-draw" style={{ animationDelay: '0s' }} />
+            <path d="M 700,100 L 1200,180" stroke="#0ea5e9" strokeWidth="1.5" fill="none" opacity="0.4" strokeDasharray="200" className="line-draw" style={{ animationDelay: '0.5s' }} />
+            <path d="M 200,150 L 150,450" stroke="#0ea5e9" strokeWidth="1.5" fill="none" opacity="0.3" strokeDasharray="200" className="line-draw" style={{ animationDelay: '1s' }} />
+            <path d="M 150,450 L 700,500" stroke="#0ea5e9" strokeWidth="1.5" fill="none" opacity="0.35" strokeDasharray="200" className="line-draw" style={{ animationDelay: '1.5s' }} />
+            <path d="M 700,500 L 1250,480" stroke="#0ea5e9" strokeWidth="1.5" fill="none" opacity="0.3" strokeDasharray="200" className="line-draw" style={{ animationDelay: '2s' }} />
+            <path d="M 150,450 L 350,750" stroke="#0ea5e9" strokeWidth="1.5" fill="none" opacity="0.25" strokeDasharray="200" className="line-draw" style={{ animationDelay: '2.5s' }} />
+            <path d="M 700,500 L 700,800" stroke="#0ea5e9" strokeWidth="1.5" fill="none" opacity="0.3" strokeDasharray="200" className="line-draw" style={{ animationDelay: '3s' }} />
+            <path d="M 1250,480 L 1100,750" stroke="#0ea5e9" strokeWidth="1.5" fill="none" opacity="0.25" strokeDasharray="200" className="line-draw" style={{ animationDelay: '3.5s' }} />
+            <path d="M 350,750 L 700,800" stroke="#0ea5e9" strokeWidth="1.5" fill="none" opacity="0.3" strokeDasharray="200" className="line-draw" style={{ animationDelay: '4s' }} />
+            <path d="M 700,800 L 1100,750" stroke="#0ea5e9" strokeWidth="1.5" fill="none" opacity="0.25" strokeDasharray="200" className="line-draw" style={{ animationDelay: '4.5s' }} />
+          </g>
+          
+          {/* Floating Connection Particles */}
+          {Array.from({ length: 15 }).map((_, i) => {
+            const paths = [
+              'M 200,150 L 700,100',
+              'M 700,100 L 1200,180',
+              'M 150,450 L 700,500',
+              'M 700,500 L 1250,480',
+              'M 350,750 L 700,800',
+            ];
+            const path = paths[i % paths.length];
+            return (
+              <g key={i} style={{ animation: `flowParticle 3s ease-in infinite`, animationDelay: `${i * 0.3}s` }}>
+                <circle cx="0" cy="0" r="2" fill="#0ea5e9" opacity="0.6">
+                  <animateMotion dur="3s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1">
+                    <mpath href={`#path-${i}`} />
+                  </animateMotion>
+                </circle>
+              </g>
+            );
+          })}
+          
+          {/* Subtle Hexagon Pattern Background */}
+          <g opacity="0.08" stroke="#0ea5e9" fill="none">
+            {Array.from({ length: 5 }).map((_, row) =>
+              Array.from({ length: 4 }).map((_, col) => {
+                const x = col * 320 + 100;
+                const y = row * 220 + 80;
+                return (
+                  <g key={`hex-${row}-${col}`}>
+                    <polygon points={`${x},${y} ${x+60},${y+30} ${x+60},${y+90} ${x},${y+120} ${x-60},${y+90} ${x-60},${y+30}`} strokeWidth="0.5" />
+                  </g>
+                );
+              })
+            )}
+          </g>
+        </svg>
+      </Box>
+
       {/* Ambient glow orbs */}
       <Styles.GlowOrb
         sx={{ top: '5%', left: '-5%', width: 500, height: 500,
@@ -247,33 +335,39 @@ export const Contact = () => {
                           {CONTACT_CONTENT.services.map((svc, i) => {
                             const isSelected = selectedService === svc.title;
                             return (
-                              <Styles.ServiceCardBtn
+                              <motion.div
                                 key={i}
-                                selected={isSelected}
-                                onClick={() => setSelectedService(svc.title)}
-                                type="button"
-                                aria-pressed={isSelected}
+                                whileHover={{ scale: 1.02, y: -4 }}
+                                transition={{ duration: 0.3 }}
+                                style={{ width: '100%' }}
                               >
-                                {/* Index + checkmark row */}
-                                <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%', mb: 0.75 }}>
-                                  <Box sx={{ fontSize: '0.6rem', fontWeight: 800, letterSpacing: '0.12em', opacity: isSelected ? 0.9 : 0.3, fontFamily: '"Bebas Neue", sans-serif', lineHeight: 1 }}>
-                                    {String(i + 1).padStart(2, '0')}
-                                  </Box>
-                                  {isSelected && (
-                                    <Box sx={{ width: 14, height: 14, borderRadius: '50%', bgcolor: 'rgba(212,175,55,0.2)', border: '1px solid rgba(212,175,55,0.5)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.5rem', color: '#D4AF37', lineHeight: 1 }}>
-                                      ✓
+                                <Styles.ServiceCardBtn
+                                  selected={isSelected}
+                                  onClick={() => setSelectedService(svc.title)}
+                                  type="button"
+                                  aria-pressed={isSelected}
+                                >
+                                  {/* Index + checkmark row */}
+                                  <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%', mb: 0.75 }}>
+                                    <Box sx={{ fontSize: '0.6rem', fontWeight: 800, letterSpacing: '0.12em', opacity: isSelected ? 0.9 : 0.3, fontFamily: '"Bebas Neue", sans-serif', lineHeight: 1 }}>
+                                      {String(i + 1).padStart(2, '0')}
                                     </Box>
-                                  )}
-                                </Box>
-                                {/* Title */}
-                                <Box sx={{ fontWeight: 700, fontSize: '0.72rem', letterSpacing: '0.01em', lineHeight: 1.3, mb: 0.35 }}>
-                                  {svc.title}
-                                </Box>
-                                {/* Desc */}
-                                <Box sx={{ fontSize: '0.58rem', opacity: 0.45, lineHeight: 1.3, letterSpacing: '0.02em' }}>
-                                  {svc.desc}
-                                </Box>
-                              </Styles.ServiceCardBtn>
+                                    {isSelected && (
+                                      <Box sx={{ width: 14, height: 14, borderRadius: '50%', bgcolor: 'rgba(212,175,55,0.2)', border: '1px solid rgba(212,175,55,0.5)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.5rem', color: '#D4AF37', lineHeight: 1 }}>
+                                        ✓
+                                      </Box>
+                                    )}
+                                  </Box>
+                                  {/* Title */}
+                                  <Box sx={{ fontWeight: 700, fontSize: '0.72rem', letterSpacing: '0.01em', lineHeight: 1.3, mb: 0.35 }}>
+                                    {svc.title}
+                                  </Box>
+                                  {/* Desc */}
+                                  <Box sx={{ fontSize: '0.58rem', opacity: 0.45, lineHeight: 1.3, letterSpacing: '0.02em' }}>
+                                    {svc.desc}
+                                  </Box>
+                                </Styles.ServiceCardBtn>
+                              </motion.div>
                             );
                           })}
                         </Styles.ServiceGrid>

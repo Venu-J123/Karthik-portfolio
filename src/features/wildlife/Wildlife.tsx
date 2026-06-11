@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from 'motion/react';
 import { useState, useEffect, useRef } from 'react';
+import { Box } from '@mui/material';
 import {
   Shield,
   PlayArrow,
@@ -581,6 +582,93 @@ const AnimatedCounter = ({ end, duration = 2, suffix = '' }: { end: number; dura
 
 const HeroSectionComponent = () => (
   <HeroSection>
+    {/* Nature/Ecosystem SVG Background */}
+    <Box sx={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', pointerEvents: 'none', zIndex: 1, overflow: 'hidden', display: 'flex' }}>
+      <svg viewBox="0 0 1400 900" preserveAspectRatio="xMidYMid slice" style={{ opacity: 0.1, width: '100%', height: '100%' }}>
+        <defs>
+          <linearGradient id="natureGradient" x1="0%" y1="100%" x2="0%" y2="0%">
+            <stop offset="0%" stopColor="#0a4d2e" />
+            <stop offset="50%" stopColor="#0f6b44" />
+            <stop offset="100%" stopColor="#1b4d3e" />
+          </linearGradient>
+          <style>{`
+            @keyframes waterFlow { 0% { transform: translateY(0px); } 50% { transform: translateY(-4px); } 100% { transform: translateY(0px); } }
+            @keyframes leafSway { 0%, 100% { transform: rotate(0deg); } 25% { transform: rotate(1.5deg); } 75% { transform: rotate(-1.5deg); } }
+            @keyframes foliageDrift { 0% { transform: translateX(0px) translateY(0px); opacity: 0; } 50% { opacity: 1; } 100% { transform: translateX(30px) translateY(-50px); opacity: 0; } }
+            @keyframes animalStep { 0%, 100% { opacity: 0.3; transform: translateX(0px); } 50% { opacity: 0.6; transform: translateX(8px); } }
+            .water-wave { animation: waterFlow 3s ease-in-out infinite; }
+            .leaf-sway { animation: leafSway 4s ease-in-out infinite; }
+            .foliage-drift { animation: foliageDrift 5s ease-in infinite; }
+            .animal-step { animation: animalStep 3s ease-in-out infinite; }
+          `}</style>
+        </defs>
+        <rect width="1400" height="900" fill="url(#natureGradient)" />
+        
+        {/* Water Stream - Flowing bottom */}
+        <g className="water-wave" style={{ animationDelay: '0s' }}>
+          <path d="M 0,750 Q 350,700 700,750 T 1400,750 L 1400,900 L 0,900 Z" fill="#0f8f5c" opacity="0.2" />
+        </g>
+        <g className="water-wave" style={{ animationDelay: '0.5s' }}>
+          <path d="M 0,770 Q 350,730 700,770 T 1400,770 L 1400,900 L 0,900 Z" fill="#0f8f5c" opacity="0.15" />
+        </g>
+        
+        {/* Tree/Branch Silhouettes - Left */}
+        <g opacity="0.35" className="leaf-sway" style={{ animationDelay: '0s', transformOrigin: '100px 300px' }}>
+          <path d="M 100,300 L 120,200 L 115,400 L 95,500" stroke="#0a4d2e" strokeWidth="3" fill="none" />
+          {Array.from({ length: 8 }).map((_, i) => (
+            <circle key={i} cx={100 + Math.cos(i * 0.785) * (40 + i * 8)} cy={300 - i * 30} r={20 - i * 2} fill="#0f6b44" opacity={0.4 - i * 0.04} />
+          ))}
+        </g>
+        
+        {/* Tree/Branch Silhouettes - Right */}
+        <g opacity="0.3" className="leaf-sway" style={{ animationDelay: '1s', transformOrigin: '1300px 280px' }}>
+          <path d="M 1300,280 L 1280,150 L 1290,380 L 1310,500" stroke="#0a4d2e" strokeWidth="3" fill="none" />
+          {Array.from({ length: 7 }).map((_, i) => (
+            <circle key={i} cx={1300 - Math.cos(i * 0.785) * (35 + i * 7)} cy={280 - i * 35} r={18 - i * 2} fill="#0f6b44" opacity={0.3 - i * 0.04} />
+          ))}
+        </g>
+        
+        {/* Central Large Tree */}
+        <g opacity="0.25" className="leaf-sway" style={{ animationDelay: '2s', transformOrigin: '700px 200px' }}>
+          <path d="M 700,200 L 750,50 L 700,400 L 650,550" stroke="#0a4d2e" strokeWidth="4" fill="none" />
+          {Array.from({ length: 10 }).map((_, i) => (
+            <circle key={i} cx={700 + Math.sin(i * 0.628) * (60 + i * 10)} cy={200 - i * 35} r={25 - i * 2.2} fill="#0f6b44" opacity={0.35 - i * 0.035} />
+          ))}
+        </g>
+        
+        {/* Drifting Foliage Particles */}
+        {Array.from({ length: 8 }).map((_, i) => (
+          <g key={i} className="foliage-drift" style={{ animationDelay: `${i * 0.6}s` }}>
+            <ellipse cx={200 + i * 140} cy={150 + i * 30} rx="4" ry="8" fill="#0f8f5c" />
+          </g>
+        ))}
+        
+        {/* Animal Footprint Trail Fading - Snake Path */}
+        <g opacity="0.2" className="animal-step" style={{ animationDelay: '0s' }}>
+          {Array.from({ length: 6 }).map((_, i) => (
+            <g key={i}>
+              <path d={`M ${300 + i * 150},600 Q ${310 + i * 150},590 ${320 + i * 150},600`} stroke="#0f8f5c" strokeWidth="2" fill="none" />
+              <circle cx={320 + i * 150} cy="600" r="3" fill="#0f8f5c" opacity="0.4" />
+            </g>
+          ))}
+        </g>
+        
+        {/* Grass Blade Details */}
+        {Array.from({ length: 30 }).map((_, i) => (
+          <line
+            key={i}
+            x1={50 + (i % 15) * 90}
+            y1="700"
+            x2={55 + (i % 15) * 90}
+            y2={680 - Math.random() * 40}
+            stroke="#0f6b44"
+            strokeWidth="1"
+            opacity="0.25"
+          />
+        ))}
+      </svg>
+    </Box>
+
     {/* ── Background layers ── */}
     <HeroBackground>
       <HeroBackgroundImage
@@ -1065,7 +1153,8 @@ const TestimonialsSection = () => {
             {TESTIMONIALS_DATA.map((testimonial, index) => (
               <TestimonialCard
                 key={index}
-                whileHover={{ y: -4 }}
+                whileHover={{ scale: 1.03, y: -6 }}
+                transition={{ duration: 0.3 }}
               >
               <TestimonialRating>
                 {[...Array(testimonial.rating)].map((_, i) => (

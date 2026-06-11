@@ -592,6 +592,81 @@ export const Fitness = ({ setPage }: FitnessProps) => {
     <FitnessWrapper>
       {/* ==================== HERO SECTION ==================== */}
       <HeroSection>
+        {/* Energy Wave SVG Background */}
+        <Box sx={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', pointerEvents: 'none', zIndex: 1, overflow: 'hidden', display: 'flex' }}>
+          <svg viewBox="0 0 1400 800" preserveAspectRatio="xMidYMid slice" style={{ opacity: 0.15, width: '100%', height: '100%' }}>
+            <defs>
+              <linearGradient id="energyGradient" x1="0%" y1="100%" x2="0%" y2="0%">
+                <stop offset="0%" stopColor="#1a1a2e" />
+                <stop offset="50%" stopColor="#2d3561" />
+                <stop offset="100%" stopColor="#3b5998" />
+              </linearGradient>
+              <radialGradient id="pulseGlow" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stopColor="#ff6f00" stopOpacity="0.8" />
+                <stop offset="100%" stopColor="#ff6f00" stopOpacity="0" />
+              </radialGradient>
+              <style>{`
+                @keyframes energyPulse { 0%, 100% { r: 80; opacity: 0.4; } 50% { r: 120; opacity: 0.1; } }
+                @keyframes waveFlow { 0% { transform: translateY(0px); } 50% { transform: translateY(-20px); } 100% { transform: translateY(0px); } }
+                @keyframes riseBar { 0%, 100% { transform: scaleY(0.5); } 50% { transform: scaleY(1); } }
+                @keyframes powerGlow { 0%, 100% { filter: drop-shadow(0 0 5px #ff6f00); opacity: 0.3; } 50% { filter: drop-shadow(0 0 20px #ff6f00); opacity: 0.8; } }
+                .energy-pulse { animation: energyPulse 2.5s ease-in-out infinite; }
+                .wave-flow { animation: waveFlow 4s ease-in-out infinite; }
+                .rise-bar { animation: riseBar 2s ease-in-out infinite; transform-origin: bottom; }
+                .power-glow { animation: powerGlow 3s ease-in-out infinite; }
+              `}</style>
+            </defs>
+            <rect width="1400" height="800" fill="url(#energyGradient)" />
+            
+            {/* Central Pulsing Energy Core */}
+            <circle className="energy-pulse" cx="700" cy="400" r="80" fill="url(#pulseGlow)" style={{ animationDelay: '0s' }} />
+            <circle className="energy-pulse" cx="700" cy="400" r="80" fill="url(#pulseGlow)" style={{ animationDelay: '0.8s' }} />
+            <circle className="energy-pulse" cx="700" cy="400" r="80" fill="url(#pulseGlow)" style={{ animationDelay: '1.6s' }} />
+            
+            {/* Energy Wave Layers */}
+            <g className="wave-flow" style={{ animationDelay: '0s' }}>
+              <path d="M 0,350 Q 350,300 700,350 T 1400,350" stroke="#ff9800" strokeWidth="3" fill="none" opacity="0.4" />
+            </g>
+            <g className="wave-flow" style={{ animationDelay: '0.5s' }}>
+              <path d="M 0,400 Q 350,350 700,400 T 1400,400" stroke="#ff6f00" strokeWidth="2" fill="none" opacity="0.5" />
+            </g>
+            <g className="wave-flow" style={{ animationDelay: '1s' }}>
+              <path d="M 0,450 Q 350,400 700,450 T 1400,450" stroke="#ff9800" strokeWidth="2" fill="none" opacity="0.3" />
+            </g>
+            
+            {/* Rising Power Bars */}
+            <g>
+              {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((i) => (
+                <g key={i} className="rise-bar" style={{ animationDelay: `${i * 0.2}s` }}>
+                  <rect x={150 + i * 130} y="600" width="80" height="150" fill="#ff6f00" opacity="0.3" rx="4" />
+                  <rect x={155 + i * 130} y="605" width="70" height="140" fill="none" stroke="#ff9800" strokeWidth="2" opacity="0.5" rx="3" />
+                </g>
+              ))}
+            </g>
+            
+            {/* Side Energy Beams */}
+            <g className="power-glow" style={{ animationDelay: '0s' }}>
+              <polygon points="0,250 100,300 100,500 0,450" fill="#ff6f00" opacity="0.2" />
+            </g>
+            <g className="power-glow" style={{ animationDelay: '1s' }}>
+              <polygon points="1400,250 1300,300 1300,500 1400,450" fill="#ff6f00" opacity="0.2" />
+            </g>
+            
+            {/* Muscle Fiber Strands */}
+            {Array.from({ length: 5 }).map((_, i) => (
+              <path
+                key={i}
+                d={`M ${100 + i * 250},150 Q ${200 + i * 250},250 ${300 + i * 250},350 T ${400 + i * 250},550`}
+                stroke="#ff9800"
+                strokeWidth="1"
+                fill="none"
+                opacity="0.25"
+                style={{ animation: `waveFlow 5s ease-in-out infinite`, animationDelay: `${i * 0.3}s` }}
+              />
+            ))}
+          </svg>
+        </Box>
+
         {/* Mobile hero image — shown only below md */}
         <FitnessHeroImageMobile
           src={`${import.meta.env.BASE_URL}assets/Gym/Filtness_home.webp`}
@@ -814,20 +889,26 @@ export const Fitness = ({ setPage }: FitnessProps) => {
                     {section.plans.map((pkg, i) => {
                       const planId = i;
                       return (
-                        <PricingCard key={i} onClick={() => setSelectedPlan(planId)} selected={selectedPlan === planId} sx={pkg.highlighted ? { pt: { xs: '2.2rem', md: '2.5rem' } } : {}}>
-                          {pkg.highlighted && <PopularBadge />}
-                          <Box sx={{ mb: 2 }}>
-                            <PricingDuration>{pkg.duration}</PricingDuration>
-                            {(pkg as any).originalPrice && <OriginalPrice>{(pkg as any).originalPrice}</OriginalPrice>}
-                            <PricingPrice>{pkg.price}</PricingPrice>
-                            {(pkg as any).savingsLabel && <SavingsBadge>{(pkg as any).savingsLabel}</SavingsBadge>}
-                            {(pkg as any).perMonth && <PricingPerMonth sx={{ mt: 0.5 }}>({(pkg as any).perMonth}/month)</PricingPerMonth>}
-                          </Box>
-                          <PricingFeaturesList>
-                            {pkg.features.map((f, j) => <PricingFeatureItem key={j}><FontAwesomeIcon icon={faCheck} /><span>{f}</span></PricingFeatureItem>)}
-                          </PricingFeaturesList>
-                          <PricingButton selected={selectedPlan === planId} onClick={(e) => { e.stopPropagation(); setSelectedPlanData(pkg); setIsPlanFormOpen(true); }}>{FITNESS_CONTENT.pricing.button}</PricingButton>
-                        </PricingCard>
+                        <motion.div
+                          key={i}
+                          whileHover={{ scale: 1.03, y: -6 }}
+                          transition={{ duration: 0.3, ease: 'easeOut' }}
+                        >
+                          <PricingCard onClick={() => setSelectedPlan(planId)} selected={selectedPlan === planId} sx={pkg.highlighted ? { pt: { xs: '2.2rem', md: '2.5rem' } } : {}}>
+                            {pkg.highlighted && <PopularBadge />}
+                            <Box sx={{ mb: 2 }}>
+                              <PricingDuration>{pkg.duration}</PricingDuration>
+                              {(pkg as any).originalPrice && <OriginalPrice>{(pkg as any).originalPrice}</OriginalPrice>}
+                              <PricingPrice>{pkg.price}</PricingPrice>
+                              {(pkg as any).savingsLabel && <SavingsBadge>{(pkg as any).savingsLabel}</SavingsBadge>}
+                              {(pkg as any).perMonth && <PricingPerMonth sx={{ mt: 0.5 }}>({(pkg as any).perMonth}/month)</PricingPerMonth>}
+                            </Box>
+                            <PricingFeaturesList>
+                              {pkg.features.map((f, j) => <PricingFeatureItem key={j}><FontAwesomeIcon icon={faCheck} /><span>{f}</span></PricingFeatureItem>)}
+                            </PricingFeaturesList>
+                            <PricingButton selected={selectedPlan === planId} onClick={(e) => { e.stopPropagation(); setSelectedPlanData(pkg); setIsPlanFormOpen(true); }}>{FITNESS_CONTENT.pricing.button}</PricingButton>
+                          </PricingCard>
+                        </motion.div>
                       );
                     })}
                   </PricingGrid>
