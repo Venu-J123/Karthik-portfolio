@@ -252,6 +252,176 @@ export const Journey = ({ setPage }: JourneyProps) => {
       <GrainOverlay />
       <Scanlines />
 
+      {/* Advanced Journey Timeline Background */}
+      <Box
+        sx={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          pointerEvents: 'none',
+          zIndex: 1,
+          overflow: 'hidden',
+        }}
+      >
+        <svg
+          style={{
+            position: 'ab solute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+          }}
+          viewBox="0 0 1400 3000"
+          preserveAspectRatio="none"
+        >
+          <defs>
+            {/* Gradient definitions */}
+            <linearGradient id="journeyGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#D4AF37" stopOpacity="0.9" />
+              <stop offset="50%" stopColor="#f59e0b" stopOpacity="0.7" />
+              <stop offset="100%" stopColor="#ec4899" stopOpacity="0.5" />
+            </linearGradient>
+            <linearGradient id="pathGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stopColor="#D4AF37" stopOpacity="0.6" />
+              <stop offset="50%" stopColor="#3b82f6" stopOpacity="0.4" />
+              <stop offset="100%" stopColor="#ec4899" stopOpacity="0.2" />
+            </linearGradient>
+
+            {/* Glow filter */}
+            <filter id="glow">
+              <feGaussianBlur stdDeviation="3" result="coloredBlur" />
+              <feMerge>
+                <feMergeNode in="coloredBlur" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+
+            {/* Shimmer animation */}
+            <style>
+              {`
+                @keyframes shimmer {
+                  0% { strokeDashoffset: 1000; }
+                  100% { strokeDashoffset: 0; }
+                }
+                @keyframes pulse {
+                  0%, 100% { r: 8; opacity: 0.6; }
+                  50% { r: 12; opacity: 1; }
+                }
+                .timeline-path {
+                  animation: shimmer 6s ease-in-out infinite;
+                }
+                .milestone-pulse {
+                  animation: pulse 2s ease-in-out infinite;
+                }
+              `}
+            </style>
+          </defs>
+
+          {/* Background grid pattern */}
+          <g opacity="0.08" stroke="#D4AF37" strokeWidth="1">
+            <line x1="0" y1="0" x2="0" y2="3000" />
+            <line x1="350" y1="0" x2="350" y2="3000" />
+            <line x1="700" y1="0" x2="700" y2="3000" />
+            <line x1="1050" y1="0" x2="1050" y2="3000" />
+            <line x1="1400" y1="0" x2="1400" y2="3000" />
+          </g>
+
+          {/* Main flowing timeline path */}
+          <path
+            className="timeline-path"
+            d="M 700,100 L 700,500 Q 700,600 650,700 L 650,1200 Q 700,1300 700,1400 L 700,1900 Q 650,2000 700,2100 L 700,2600 Q 750,2700 700,2800"
+            stroke="url(#pathGradient)"
+            strokeWidth="4"
+            fill="none"
+            strokeLinecap="round"
+            strokeDasharray="1000"
+            opacity="0.7"
+          />
+
+          {/* Milestone connection nodes with glow */}
+          <g filter="url(#glow)">
+            {/* Checkpoint 1 - 2005 Wildlife */}
+            <circle className="milestone-pulse" cx="700" cy="300" r="8" fill="#f59e0b" />
+            <circle cx="700" cy="300" r="15" fill="none" stroke="#f59e0b" strokeWidth="1" opacity="0.3" />
+
+            {/* Checkpoint 2 - 2007 Fitness */}
+            <circle className="milestone-pulse" cx="700" cy="700" r="8" fill="#3b82f6" />
+            <circle cx="700" cy="700" r="15" fill="none" stroke="#3b82f6" strokeWidth="1" opacity="0.3" />
+
+            {/* Checkpoint 3 - 2009 Professional */}
+            <circle className="milestone-pulse" cx="700" cy="1100" r="8" fill="#10b981" />
+            <circle cx="700" cy="1100" r="15" fill="none" stroke="#10b981" strokeWidth="1" opacity="0.3" />
+
+            {/* Checkpoint 4 - 2010 Acting */}
+            <circle className="milestone-pulse" cx="700" cy="1500" r="8" fill="#ec4899" />
+            <circle cx="700" cy="1500" r="15" fill="none" stroke="#ec4899" strokeWidth="1" opacity="0.3" />
+
+            {/* Checkpoint 5 - 2012 Championship */}
+            <circle className="milestone-pulse" cx="700" cy="1900" r="8" fill="#D4AF37" />
+            <circle cx="700" cy="1900" r="15" fill="none" stroke="#D4AF37" strokeWidth="1" opacity="0.3" />
+
+            {/* Checkpoint 6 - Present */}
+            <circle className="milestone-pulse" cx="700" cy="2450" r="8" fill="#06b6d4" />
+            <circle cx="700" cy="2450" r="15" fill="none" stroke="#06b6d4" strokeWidth="1" opacity="0.3" />
+          </g>
+
+          {/* Connecting branch lines to cards */}
+          <g stroke="url(#journeyGradient)" strokeWidth="1.5" fill="none" opacity="0.4" strokeDasharray="5,5">
+            {/* Left branches */}
+            <path d="M 700,300 L 250,300" />
+            <path d="M 700,700 L 250,700" />
+            <path d="M 700,1100 L 250,1100" />
+
+            {/* Right branches */}
+            <path d="M 700,1500 L 1150,1500" />
+            <path d="M 700,1900 L 1150,1900" />
+            <path d="M 700,2450 L 1150,2450" />
+          </g>
+
+          {/* Decorative spiral elements */}
+          <g opacity="0.15" stroke="url(#journeyGradient)" strokeWidth="1" fill="none">
+            <circle cx="200" cy="300" r="30" />
+            <circle cx="200" cy="300" r="50" />
+            <circle cx="1200" cy="1500" r="40" />
+            <circle cx="1200" cy="1500" r="60" />
+          </g>
+
+          {/* Progress flow particles */}
+          <g opacity="0.3">
+            <circle cx="700" cy="150" r="3" fill="#D4AF37">
+              <animate attributeName="cy" from="150" to="2500" dur="8s" repeatCount="indefinite" />
+              <animate attributeName="opacity" from="0.6" to="0" dur="8s" repeatCount="indefinite" />
+            </circle>
+            <circle cx="680" cy="200" r="2.5" fill="#f59e0b">
+              <animate attributeName="cy" from="200" to="2550" dur="10s" repeatCount="indefinite" />
+              <animate attributeName="opacity" from="0.5" to="0" dur="10s" repeatCount="indefinite" />
+            </circle>
+            <circle cx="720" cy="100" r="2" fill="#ec4899">
+              <animate attributeName="cy" from="100" to="2600" dur="12s" repeatCount="indefinite" />
+              <animate attributeName="opacity" from="0.4" to="0" dur="12s" repeatCount="indefinite" />
+            </circle>
+          </g>
+        </svg>
+
+        {/* Radial glow overlay */}
+        <Box
+          sx={{
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            width: '800px',
+            height: '800px',
+            background:
+              'radial-gradient(circle, rgba(212, 175, 55, 0.05) 0%, transparent 70%)',
+            borderRadius: '50%',
+            pointerEvents: 'none',
+          }}
+        />
+      </Box>
+
       <PageInner>
         {/* ── HEADER ── */}
         <motion.div
@@ -330,7 +500,7 @@ export const Journey = ({ setPage }: JourneyProps) => {
                   {/* Card content */}
                   {isWide ? (
                     // M8: Full-width climax — centered layout
-                    <CardCenter>
+                    <CardCenter sx={{ display: { xs: 'none', md: 'flex' } }}>
                       <div style={{ textAlign: 'center' }}>
                         <CategoryPill accent={m.iconColor} sx={{ justifyContent: 'center' }}>
                           <m.icon />
@@ -353,7 +523,7 @@ export const Journey = ({ setPage }: JourneyProps) => {
                     </CardCenter>
                   ) : isTall ? (
                     // M3: Tall card — full content + CTA button
-                    <CardFull>
+                    <CardFull sx={{ display: { xs: 'none', md: 'flex' } }}>
                       {m.type === 'video' && (
                         <PlayBadge>
                           <PlayArrow />
@@ -413,7 +583,7 @@ export const Journey = ({ setPage }: JourneyProps) => {
                   ) : (
                     // Default: bottom-anchored content
                     <CardBottom>
-                      <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 0.75, flexWrap: 'wrap' }}>
+                      <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center', gap: 1, mb: 0.75, flexWrap: 'wrap' }}>
                         <CategoryPill accent={m.iconColor}>
                           <m.icon />
                           <span>{m.category}</span>
@@ -460,7 +630,7 @@ export const Journey = ({ setPage }: JourneyProps) => {
             </FooterQuote>
             <FooterSource>— On the intersection of Discipline and Art</FooterSource>
           </div>
-          <NavBtns>
+          <NavBtns sx={{ display: { xs: 'none', md: 'flex' } }}>
             <CircleBtn onClick={() => setPage?.('fitness')}>
               <ChevronLeft />
             </CircleBtn>

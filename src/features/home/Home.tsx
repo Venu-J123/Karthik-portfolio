@@ -731,6 +731,133 @@ export const Home = (_props: HomeProps) => {
       <JourneySection>
         <JourneyBackground />
 
+        {/* Mountain Climbing Journey Visualization */}
+        <Box
+          sx={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            pointerEvents: 'none',
+            zIndex: 1,
+            overflow: 'hidden',
+          }}
+        >
+          <svg
+            style={{
+              position: 'absolute',
+              width: '100%',
+              height: '100%',
+              opacity: 0.25,
+            }}
+            viewBox="0 0 1200 1000"
+            preserveAspectRatio="xMidYMid slice"
+          >
+            <defs>
+              {/* Night sky gradient */}
+              <linearGradient id="skyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stopColor="#1a3a52" />
+                <stop offset="40%" stopColor="#2c5aa0" />
+                <stop offset="100%" stopColor="#5a4a2a" />
+              </linearGradient>
+
+              {/* Moon glow */}
+              <radialGradient id="moonGlow" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stopColor="#fffacd" stopOpacity="1" />
+                <stop offset="60%" stopColor="#ffd700" stopOpacity="0.6" />
+                <stop offset="100%" stopColor="#ffa500" stopOpacity="0" />
+              </radialGradient>
+
+              {/* Animations */}
+              <style>
+                {`
+                  @keyframes twinkle {
+                    0%, 100% { opacity: 0.3; }
+                    50% { opacity: 1; }
+                  }
+                  @keyframes shootingStar {
+                    0% { transform: translate(-200px, -200px); opacity: 1; }
+                    100% { transform: translate(400px, 400px); opacity: 0; }
+                  }
+                  @keyframes moonPulse {
+                    0%, 100% { r: 120; }
+                    50% { r: 125; }
+                  }
+                  .star {
+                    animation: twinkle 3s ease-in-out infinite;
+                  }
+                  .shooting-star {
+                    animation: shootingStar 3s ease-in-out infinite;
+                  }
+                  .moon-circle {
+                    animation: moonPulse 4s ease-in-out infinite;
+                  }
+                `}
+              </style>
+            </defs>
+
+            {/* Night sky background */}
+            <rect width="1200" height="1000" fill="url(#skyGradient)" />
+
+            {/* Starfield */}
+            <g opacity="0.8">
+              <circle className="star" cx="150" cy="80" r="1.5" fill="#fff" style={{ animationDelay: '0s' }} />
+              <circle className="star" cx="280" cy="120" r="1" fill="#fff" style={{ animationDelay: '0.5s' }} />
+              <circle className="star" cx="420" cy="60" r="1.5" fill="#fff" style={{ animationDelay: '1s' }} />
+              <circle className="star" cx="550" cy="100" r="1" fill="#fff" style={{ animationDelay: '1.5s' }} />
+              <circle className="star" cx="700" cy="70" r="1.5" fill="#fff" style={{ animationDelay: '2s' }} />
+              <circle className="star" cx="850" cy="110" r="1" fill="#fff" style={{ animationDelay: '0.7s' }} />
+              <circle className="star" cx="950" cy="80" r="1.5" fill="#fff" style={{ animationDelay: '1.2s' }} />
+              <circle className="star" cx="1050" cy="90" r="1" fill="#fff" style={{ animationDelay: '1.8s' }} />
+              <circle className="star" cx="200" cy="200" r="1" fill="#fff" style={{ animationDelay: '0.3s' }} />
+              <circle className="star" cx="380" cy="180" r="1.5" fill="#fff" style={{ animationDelay: '1.1s' }} />
+              <circle className="star" cx="600" cy="220" r="1" fill="#fff" style={{ animationDelay: '0.9s' }} />
+              <circle className="star" cx="800" cy="190" r="1.5" fill="#fff" style={{ animationDelay: '1.6s' }} />
+              <circle className="star" cx="1000" cy="210" r="1" fill="#fff" style={{ animationDelay: '0.4s' }} />
+              <circle className="star" cx="100" cy="150" r="1.5" fill="#fff" style={{ animationDelay: '2.1s' }} />
+              <circle className="star" cx="1100" cy="140" r="1" fill="#fff" style={{ animationDelay: '0.8s' }} />
+            </g>
+
+            {/* Shooting star */}
+            <g className="shooting-star" style={{ animationDelay: '0s' }}>
+              <line x1="0" y1="0" x2="60" y2="60" stroke="#fff" strokeWidth="2" opacity="1" />
+              <line x1="0" y1="0" x2="120" y2="120" stroke="#fff" strokeWidth="1" opacity="0.5" />
+            </g>
+
+            {/* Additional shooting star with delay */}
+            <g className="shooting-star" style={{ animationDelay: '2.5s' }}>
+              <line x1="0" y1="0" x2="50" y2="50" stroke="#fffacd" strokeWidth="2" opacity="0.8" />
+              <line x1="0" y1="0" x2="100" y2="100" stroke="#fffacd" strokeWidth="1" opacity="0.4" />
+            </g>
+
+            {/* Large glowing moon */}
+            <circle cx="850" cy="200" r="120" fill="url(#moonGlow)" opacity="0.9" />
+            <circle className="moon-circle" cx="850" cy="200" r="120" fill="none" stroke="#ffd700" strokeWidth="2" opacity="0.3" />
+
+            {/* Moon surface details */}
+            <circle cx="820" cy="180" r="8" fill="#e6b800" opacity="0.4" />
+            <circle cx="870" cy="210" r="6" fill="#e6b800" opacity="0.35" />
+            <circle cx="840" cy="240" r="7" fill="#e6b800" opacity="0.38" />
+
+            {/* Mountain silhouettes */}
+            <polygon
+              points="0,600 300,250 450,400 600,180 800,350 1000,200 1200,450 1200,1000 0,1000"
+              fill="#0a1929"
+              opacity="0.95"
+            />
+
+            {/* Secondary mountain layer */}
+            <polygon
+              points="100,700 250,400 500,550 700,380 950,480 1100,350 1200,600 1200,1000 0,1000"
+              fill="#152238"
+              opacity="0.7"
+            />
+
+
+          </svg>
+        </Box>
+
         {/* Section heading */}
         <JourneyContainer>
           <Box>

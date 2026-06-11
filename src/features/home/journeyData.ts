@@ -49,7 +49,17 @@ export const JOURNEY_MILESTONES: JourneyMilestone[] = [
   },
   {
     id: 2,
-    year: '~2007',
+    year: '2005',
+    title: 'Wildlife Rescue Professional',
+    description:
+      'Completed a professional course in Bannerghatta forest. Member of Wildlife Quick Animal Rescue Team and WRRC for 15–20 years. Rescued thousands of snakes around Bengaluru Sarjapur area.',
+    category: 'wildlife',
+    icon: VolunteerActivismIcon,
+    color: CATEGORY_COLORS.wildlife,
+  },
+  {
+    id: 3,
+    year: '2007',
     title: 'Bodybuilding Inspiration',
     description:
       "Inspired by father's exercise routine and international bodybuilder Karibasappa in the newspaper. Joined the gym with brother \"Seena anna\" and began learning the fundamentals of strength training.",
@@ -58,7 +68,7 @@ export const JOURNEY_MILESTONES: JourneyMilestone[] = [
     color: CATEGORY_COLORS.fitness,
   },
   {
-    id: 3,
+    id: 4,
     year: '2009',
     title: 'Professional Bodybuilding Begins',
     description:
@@ -68,7 +78,7 @@ export const JOURNEY_MILESTONES: JourneyMilestone[] = [
     color: CATEGORY_COLORS.fitness,
   },
   {
-    id: 4,
+    id: 5,
     year: '2010',
     title: 'Short Film Debut — "Kuchu Koo"',
     description:
@@ -78,7 +88,7 @@ export const JOURNEY_MILESTONES: JourneyMilestone[] = [
     color: CATEGORY_COLORS.acting,
   },
   {
-    id: 5,
+    id: 6,
     year: '~2012',
     title: 'Mr. Karnataka Champion',
     description:
@@ -88,7 +98,7 @@ export const JOURNEY_MILESTONES: JourneyMilestone[] = [
     color: CATEGORY_COLORS.fitness,
   },
   {
-    id: 6,
+    id: 7,
     year: '2014',
     title: 'Movie Debut — "Ambarisha" with D Boss',
     description:
@@ -98,7 +108,7 @@ export const JOURNEY_MILESTONES: JourneyMilestone[] = [
     color: CATEGORY_COLORS.acting,
   },
   {
-    id: 7,
+    id: 8,
     year: '~2014',
     title: 'Mr. India Champion',
     description:
@@ -108,7 +118,7 @@ export const JOURNEY_MILESTONES: JourneyMilestone[] = [
     color: CATEGORY_COLORS.fitness,
   },
   {
-    id: 8,
+    id: 9,
     year: '2015',
     title: 'Own Gym Established',
     description:
@@ -116,16 +126,6 @@ export const JOURNEY_MILESTONES: JourneyMilestone[] = [
     category: 'fitness',
     icon: StorefrontIcon,
     color: CATEGORY_COLORS.fitness,
-  },
-  {
-    id: 9,
-    year: '2015+',
-    title: 'Wildlife Rescue Professional',
-    description:
-      'Completed a professional course in Bannerghatta forest. Member of Wildlife Quick Animal Rescue Team and WRRC for 15–20 years. Rescued thousands of snakes around Anekal area.',
-    category: 'wildlife',
-    icon: VolunteerActivismIcon,
-    color: CATEGORY_COLORS.wildlife,
   },
   {
     id: 10,

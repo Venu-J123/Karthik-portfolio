@@ -1878,6 +1878,7 @@ export const MilestoneIconWrapper = styled(Box)<{ iconcolor?: string }>(({ theme
 }));
 
 export const TimelineDot = styled(Box)<{ dotcolor?: string }>(({ theme, dotcolor }) => ({
+  display: 'none',
   width: '12px',
   height: '12px',
   backgroundColor: dotcolor || '#adc6ff',
@@ -1892,6 +1893,7 @@ export const TimelineDot = styled(Box)<{ dotcolor?: string }>(({ theme, dotcolor
   transition: 'all 0.3s ease',
 
   [theme.breakpoints.up('md')]: {
+    display: 'block',
     width: '16px',
     height: '16px',
     boxShadow: `0 0 0 6px ${dotcolor ? dotcolor + '25' : 'rgba(173, 198, 255, 0.15)'}`,
